@@ -1,0 +1,480 @@
+/* 豆豆小红书资源下载器 样式表 */
+
+/* ==================== Toast 提示 ==================== */
+
+.xhs-downloader-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: xhs-toast-in 0.2s ease-out;
+  max-width: 90vw;
+  word-wrap: break-word;
+}
+
+@keyframes xhs-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ==================== 进度浮窗 ==================== */
+
+.xhs-downloader-progress {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483646;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 16px 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  min-width: 280px;
+  max-width: 90vw;
+}
+
+.xhs-downloader-progress-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.xhs-downloader-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.xhs-downloader-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff2442, #ff6060);
+  border-radius: 3px;
+  transition: width 0.15s ease;
+  width: 0%;
+}
+
+.xhs-downloader-progress-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ==================== 面板 ==================== */
+
+.xhs-downloader-panel {
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  z-index: 2147483646;
+  width: 380px;
+  max-height: calc(100vh - 140px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .xhs-downloader-panel {
+    width: calc(100vw - 32px);
+    max-width: 380px;
+    right: 16px;
+    top: 60px;
+    max-height: calc(100vh - 100px);
+  }
+}
+
+.xhs-downloader-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  background: linear-gradient(135deg, #ff2442 0%, #ff5c5c 100%);
+  color: #fff;
+}
+
+.xhs-downloader-panel-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.xhs-downloader-panel-subtitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.xhs-downloader-panel-subtitle:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.xhs-downloader-panel-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.xhs-downloader-icon-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.xhs-downloader-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.xhs-downloader-icon-btn:active {
+  transform: scale(0.95);
+}
+
+.xhs-downloader-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+.xhs-downloader-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.xhs-downloader-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.xhs-downloader-list::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+.xhs-downloader-list::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
+}
+
+.xhs-downloader-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.xhs-downloader-empty-tip {
+  font-size: 12px;
+  color: #bbb;
+  display: block;
+  margin-top: 8px;
+}
+
+.xhs-downloader-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+
+.xhs-downloader-item:hover {
+  background: #f5f5f5;
+  transform: translateX(-2px);
+}
+
+.xhs-downloader-item-info {
+  flex: 1;
+  min-width: 0;
+  margin-right: 12px;
+}
+
+.xhs-downloader-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 6px;
+}
+
+.xhs-downloader-item-meta {
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.xhs-downloader-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.xhs-downloader-badge-image {
+  background: #fff3e0;
+  color: #ff9800;
+}
+
+.xhs-downloader-badge-video {
+  background: #e3f2fd;
+  color: #2196f3;
+}
+
+.xhs-downloader-btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ff2442, #ff4d6a);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(255, 36, 66, 0.2);
+}
+
+.xhs-downloader-btn:hover {
+  background: linear-gradient(135deg, #e6203a, #e63f58);
+  box-shadow: 0 4px 12px rgba(255, 36, 66, 0.3);
+  transform: translateY(-1px);
+}
+
+.xhs-downloader-btn:active {
+  transform: translateY(0);
+}
+
+.xhs-downloader-btn:disabled {
+  background: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.xhs-downloader-btn.loading::before {
+  content: "⏳ ";
+}
+
+.xhs-downloader-btn.success {
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.xhs-downloader-btn.success::before {
+  content: "✓ ";
+}
+
+.xhs-downloader-btn.error {
+  background: linear-gradient(135deg, #f44336, #e57373);
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.2);
+}
+
+.xhs-downloader-btn.error::before {
+  content: "✗ ";
+}
+
+.xhs-downloader-panel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.xhs-downloader-count {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+}
+
+.xhs-downloader-btn-send {
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+/* ==================== 悬浮球 ==================== */
+
+.xhs-downloader-ball {
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  z-index: 2147483646;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff2442 0%, #ff5266 100%);
+  box-shadow: 0 4px 18px rgba(255, 36, 66, 0.4), 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .xhs-downloader-ball {
+    top: 60px;
+    right: 16px;
+  }
+}
+
+.xhs-downloader-ball:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(255, 36, 66, 0.55), 0 2px 8px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #ff1738 0%, #ff4258 100%);
+}
+
+.xhs-downloader-ball:active {
+  transform: scale(0.95);
+}
+
+.xhs-downloader-ball-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.xhs-downloader-ball-icon svg {
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+.xhs-downloader-ball-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  background: #ffffff;
+  color: #ff2442;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  line-height: 1;
+}
+
+/* ==================== 深色模式适配 ==================== */
+
+@media (prefers-color-scheme: dark) {
+  .xhs-downloader-panel {
+    background: #1e1e1e;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .xhs-downloader-panel-header {
+    border-bottom-color: #333;
+  }
+
+  .xhs-downloader-list::-webkit-scrollbar-thumb {
+    background: #444;
+  }
+
+  .xhs-downloader-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .xhs-downloader-item {
+    background: #2a2a2a;
+  }
+
+  .xhs-downloader-item:hover {
+    background: #333;
+  }
+
+  .xhs-downloader-item-title {
+    color: #e0e0e0;
+  }
+
+  .xhs-downloader-item-meta {
+    color: #aaa;
+  }
+
+  .xhs-downloader-panel-footer {
+    border-top-color: #333;
+    background: #252525;
+  }
+
+  .xhs-downloader-count {
+    color: #aaa;
+  }
+
+  .xhs-downloader-empty {
+    color: #777;
+  }
+
+  .xhs-downloader-empty-tip {
+    color: #555;
+  }
+
+  .xhs-downloader-badge-image {
+    background: rgba(255, 152, 0, 0.2);
+    color: #ffa726;
+  }
+
+  .xhs-downloader-badge-video {
+    background: rgba(33, 150, 243, 0.2);
+    color: #42a5f5;
+  }
+
+  .xhs-downloader-toast {
+    background: rgba(30, 30, 30, 0.95);
+  }
+
+  .xhs-downloader-progress {
+    background: rgba(30, 30, 30, 0.95);
+  }
+}
