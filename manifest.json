@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "小红书资源下载",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "小红书无水印高清原图与视频下载器，核心算法由 WASM 驱动",
   "permissions": [
     "storage",
